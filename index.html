@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TrustScore AI</title>
+
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+<header class="top-bar">
+  <span class="badge">✨ AI-Powered Website Trust Analysis</span>
+</header>
+
+<main class="hero">
+
+  <h1>
+    Know if a Website is <br />
+    <span>Safe to Trust</span>
+  </h1>
+
+  <p class="subtitle">
+    Our AI analyzes websites in real-time using multiple trust signals to
+    protect you from scams and phishing.
+  </p>
+
+  <!-- INPUT BAR -->
+  <div class="url-box">
+    <input
+      type="text"
+      id="url-input"
+      placeholder="e.g. paypa1-secure-login.xyz/verify"
+    />
+    <button id="analyze-btn">Analyze →</button>
+  </div>
+
+  <!-- QUICK TEST -->
+  <div class="quick-test">
+    <button onclick="fillExample('google.com')" class="safe">Google</button>
+    <button onclick="fillExample('amazon.in')" class="safe">Amazon</button>
+    <button onclick="fillExample('paypa1-secure-login.xyz')" class="danger">Phishing Example</button>
+  </div>
+
+  <!-- RESULT -->
+  <section id="result" class="result hidden">
+    <div class="circle">
+      <svg width="220" height="220">
+        <circle cx="110" cy="110" r="90" class="bg"/>
+        <circle cx="110" cy="110" r="90" class="progress"/>
+      </svg>
+      <div class="score-text">
+        <h2 id="score-value">0</h2>
+        <span>Trust Score</span>
+        <div id="risk-label" class="risk">Safe</div>
+      </div>
+    </div>
+
+    <p class="analyzed">
+      Analyzed URL: <span id="analyzed-url"></span>
+    </p>
+
+    <div class="actions">
+      <button class="primary">View Full Analysis</button>
+      <button class="secondary">Explain Score</button>
+    </div>
+  </section>
+
+</main>
+
+<script src="js/trust-scorer.js"></script>
+<script src="js/ui-interactions.js"></script>
+</body>
+</html>
