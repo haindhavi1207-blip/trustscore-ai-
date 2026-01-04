@@ -1,0 +1,87 @@
+/* =========================================
+   TrustScore AI – Responsive Design
+========================================= */
+
+/* ---------- MOBILE FIRST ---------- */
+.glass-card {
+    padding: 1.2rem;
+    margin: 4rem 1rem;
+    max-width: 100%;
+  }
+  
+  nav ul {
+    display: none;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+  
+  nav h1 {
+    font-size: 1.2rem;
+  }
+  
+  .trust-meter {
+    margin-top: 1.2rem;
+  }
+  
+  .progress-bar {
+    height: 14px;
+  }
+  
+  #graph-canvas {
+    width: 100%;
+    max-width: 360px;
+    height: auto;
+  }
+  
+  /* ---------- TABLETS ---------- */
+  @media (min-width: 768px) {
+    .glass-card {
+      padding: 2rem;
+      margin: 6rem auto;
+      max-width: 850px;
+    }
+  
+    nav ul {
+      display: flex;
+      flex-direction: row;
+    }
+  
+    nav h1 {
+      font-size: 1.5rem;
+    }
+  
+    .progress-bar {
+      height: 18px;
+    }
+  
+    #graph-canvas {
+      width: 400px;
+    }
+  }
+  
+  /* ---------- DESKTOP ---------- */
+  @media (min-width: 1024px) {
+    .glass-card {
+      max-width: 1000px;
+    }
+  
+    nav ul {
+      gap: 2rem;
+    }
+  }
+  
+  /* ---------- SMALL PHONES ---------- */
+  @media (max-width: 480px) {
+    body {
+      font-size: 0.9rem;
+    }
+  
+    h2 {
+      font-size: 1.4rem;
+    }
+  
+    input, button {
+      width: 100%;
+    }
+  }
+  
