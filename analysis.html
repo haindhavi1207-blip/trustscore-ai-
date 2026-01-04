@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Analysis – TrustScore AI</title>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<header class="top-bar">
+  <span class="badge">Home → Analysis</span>
+</header>
+
+<main class="hero">
+
+<div class="glass-card">
+
+  <div class="nav-row">
+    <button class="secondary" onclick="location.href='index.html'">← Home</button>
+    <button class="secondary" onclick="location.href='explainable-ai.html'">Explain Score →</button>
+  </div>
+
+  <h2>Trust Analysis</h2>
+  <p class="analyzed">URL: <b id="url"></b></p>
+
+  <div class="analysis-grid">
+
+    <!-- Donut -->
+    <div class="card">
+      <h3>Total Score</h3>
+      <canvas id="donut" width="200" height="200"></canvas>
+      <p id="score-text"></p>
+    </div>
+
+    <!-- Bars -->
+    <div class="card">
+      <h3>Signal Breakdown</h3>
+      <canvas id="bars" width="260" height="200"></canvas>
+    </div>
+
+  </div>
+
+  <p class="subtitle" id="reason"></p>
+
+</div>
+</main>
+
+<script src="js/trust-scorer.js"></script>
+<script>
+const url = sessionStorage.getItem('analyzedUrl');
+scorer.calculateScore(url);
+
+document.getElementById('url').textContent = url;
+document.getElementById('score-text').textContent =
+  `Score: ${scorer.totalScore} (${scorer.riskStatus})`;
+document.getElementById('reason').textContent = scorer.reasoning;
+
+/* DONUT */
+const d = document.getElementById('donut').getContext('2d');
+d.beginPath();
+d.arc(100,100,80,0,2*Math.PI);
+d.strokeStyle='#222'; d.lineWidth=18; d.stroke();
+d.beginPath();
+d.arc(100,100,80,-Math.PI/2,
+(-Math.PI/2)+(2*Math.PI*scorer.totalScore/100));
+d.strokeStyle='#7c3aed'; d.lineWidth=18; d.stroke();
+
+/* BARS */
+const b = document.getElementById('bars').getContext('2d');
+const vals = [scorer.scores.url, scorer.scores.content, scorer.scores.behavior];
+['URL','Content','Behavior'].forEach((l,i)=>{
+  b.fillStyle='#7c3aed';
+  b.fillRect(40+i*70,200-vals[i]*3,30,vals[i]*3);
+  b.fillStyle='#fff';
+  b.fillText(l,40+i*70,195);
+});
+</script>
+</body>
+</html>

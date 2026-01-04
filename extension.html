@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Trust Score - Extension</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <h1>TrustScore AI</h1>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="analysis.html">Analysis</a></li>
+                <li><a href="explainable-ai.html">Explainable AI</a></li>
+                <li><a href="extension.html">Extension</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="extension">
+        <div class="glass-card">
+            <button class="back-btn" onclick="window.location.href='index.html'">← Back to Home</button>
+            <h2>Browser Extension Demo</h2>
+            <p>Simulated real-time popup: Score 45 | Warning: High Risk!</p>
+            <div id="popup-demo" class="popup">Risky Element Highlighted</div>
+            <button id="simulate-alert">Trigger Alert</button>
+        </div>
+    </main>
+    <script src="js/trust-scorer.js"></script>
+    <script src="js/ui-interactions.js"></script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Explain – TrustScore AI</title>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<header class="top-bar">
+  <span class="badge">Home → Analysis → Explain</span>
+</header>
+
+<main class="hero">
+<div class="glass-card">
+
+  <div class="nav-row">
+    <button class="secondary" onclick="location.href='analysis.html'">← Analysis</button>
+    <button class="secondary" onclick="location.href='index.html'">Home</button>
+  </div>
+
+  <h2>Explainable AI</h2>
+  <p class="analyzed">URL: <b id="url"></b></p>
+
+  <h3>Why this score?</h3>
+  <p id="reason"></p>
+
+  <ul class="explain-list" id="list"></ul>
+
+</div>
+</main>
+
+<script src="js/trust-scorer.js"></script>
+<script>
+const url = sessionStorage.getItem('analyzedUrl');
+scorer.calculateScore(url);
+
+document.getElementById('url').textContent = url;
+document.getElementById('reason').textContent = scorer.reasoning;
+
+const list = document.getElementById('list');
+[
+  `URL Trust: ${scorer.scores.url}/40`,
+  `Content Trust: ${scorer.scores.content}/30`,
+  `Behavior Trust: ${scorer.scores.behavior}/30`,
+  `Confidence: ${scorer.confidence}%`
+].forEach(t=>{
+  const li=document.createElement('li');
+  li.textContent=t;
+  list.appendChild(li);
+});
+</script>
+</body>
+</html>
